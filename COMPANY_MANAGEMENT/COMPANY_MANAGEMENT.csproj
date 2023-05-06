@@ -1,0 +1,452 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <SSDTUnitTestPath Condition="'$(SSDTUnitTestPath)' == ''">$(VsInstallRoot)\Common7\IDE\Extensions\Microsoft\SQLDB</SSDTUnitTestPath>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup>
+    <SSDTPath Condition="'$(SSDTPath)' == ''">$(VsInstallRoot)\Common7\IDE\Extensions\Microsoft\SQLDB\DAC</SSDTPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{247CAA9E-2A24-458D-8EA4-246687D07F72}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>COMPANY_MANAGEMENT</RootNamespace>
+    <AssemblyName>COMPANY_MANAGEMENT</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SqlClient, Version=4.6.1.5, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SqlClient.4.8.5\lib\net461\System.Data.SqlClient.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Absence.cs">
+      <DependentUpon>CompanyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COMPANYModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>COMPANYModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CompanyModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CompanyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COMPANYModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>COMPANYModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="CompleteJob.cs">
+      <DependentUpon>CompanyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contact.cs">
+      <DependentUpon>CompanyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Distribution.cs">
+      <DependentUpon>CompanyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FormLeader\DistributionLD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLeader\DistributionLD.designer.cs">
+      <DependentUpon>DistributionLD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLeader\FContact.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLeader\FContact.Designer.cs">
+      <DependentUpon>FContact.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLeader\FLeader.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLeader\FLeader.designer.cs">
+      <DependentUpon>FLeader.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLeader\FProject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLeader\FProject.Designer.cs">
+      <DependentUpon>FProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLeader\FTask.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLeader\FTask.Designer.cs">
+      <DependentUpon>FTask.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormManager\FAssignedWork.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormManager\FAssignedWork.designer.cs">
+      <DependentUpon>FAssignedWork.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormManager\FChangePassWord.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormManager\FChangePassWord.Designer.cs">
+      <DependentUpon>FChangePassWord.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormManager\FContact.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormManager\FContact.designer.cs">
+      <DependentUpon>FContact.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormManager\FJob.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormManager\FJob.Designer.cs">
+      <DependentUpon>FJob.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormManager\FCheck.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormManager\FCheck.designer.cs">
+      <DependentUpon>FCheck.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormManager\FDistribution.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormManager\FDistribution.Designer.cs">
+      <DependentUpon>FDistribution.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormManager\FLetterMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormManager\FLetterMain.Designer.cs">
+      <DependentUpon>FLetterMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormManager\FLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormManager\FLogin.Designer.cs">
+      <DependentUpon>FLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormManager\FManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormManager\FManager.Designer.cs">
+      <DependentUpon>FManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormManager\FSalary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormManager\FSalary.Designer.cs">
+      <DependentUpon>FSalary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormStaff1\FAbsenceLetter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormStaff1\FAbsenceLetter.Designer.cs">
+      <DependentUpon>FAbsenceLetter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormStaff1\FAnnouncement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormStaff1\FAnnouncement.Designer.cs">
+      <DependentUpon>FAnnouncement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormStaff1\FChangePassWord.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormStaff1\FChangePassWord.designer.cs">
+      <DependentUpon>FChangePassWord.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormStaff1\FCheck.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormStaff1\FCheck.designer.cs">
+      <DependentUpon>FCheck.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormStaff1\FInformation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormStaff1\FInformation.designer.cs">
+      <DependentUpon>FInformation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormStaff1\FPayroll.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormStaff1\FPayroll.designer.cs">
+      <DependentUpon>FPayroll.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormStaff1\FStaff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormStaff1\FStaff.designer.cs">
+      <DependentUpon>FStaff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Job.cs">
+      <DependentUpon>CompanyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Leader.cs">
+      <DependentUpon>CompanyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Manager.cs">
+      <DependentUpon>CompanyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OOP\AbsenceLetter.cs" />
+    <Compile Include="OOP\AbsenceLetterDAO.cs" />
+    <Compile Include="OOP\AssignedWorkDAO.cs" />
+    <Compile Include="OOP\Check.cs" />
+    <Compile Include="OOP\CheckDAO.cs" />
+    <Compile Include="OOP\ExtendedCompJob.cs" />
+    <Compile Include="OOP\CompleteJobDAO.cs" />
+    <Compile Include="OOP\ExtendedContact.cs" />
+    <Compile Include="OOP\ContactDAO.cs" />
+    <Compile Include="OOP\DBConn.cs" />
+    <Compile Include="OOP\DistributionDAO.cs" />
+    <Compile Include="OOP\ExtendedJob.cs" />
+    <Compile Include="OOP\JobDAO.cs" />
+    <Compile Include="OOP\ExtendedLeader.cs" />
+    <Compile Include="OOP\LeaderDAO.cs" />
+    <Compile Include="OOP\ExtendedManager.cs" />
+    <Compile Include="OOP\ManagerDAO.cs" />
+    <Compile Include="OOP\ExtendedProcJob.cs" />
+    <Compile Include="OOP\ProcessJobDAO.cs" />
+    <Compile Include="OOP\ExtendedProject.cs" />
+    <Compile Include="OOP\ProjectDAO.cs" />
+    <Compile Include="OOP\ExtendedStaff.cs" />
+    <Compile Include="OOP\StaffDAO.cs" />
+    <Compile Include="OOP\ExtendedTask.cs" />
+    <Compile Include="OOP\TaskDAO.cs" />
+    <Compile Include="ProcessJob.cs">
+      <DependentUpon>CompanyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Project.cs">
+      <DependentUpon>CompanyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="FormManager\FShowLetter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormManager\FShowLetter.Designer.cs">
+      <DependentUpon>FShowLetter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SQLCheck.cs">
+      <DependentUpon>CompanyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Staff.cs">
+      <DependentUpon>CompanyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Task.cs">
+      <DependentUpon>CompanyModel.tt</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="FormLeader\DistributionLD.resx">
+      <DependentUpon>DistributionLD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLeader\FContact.resx">
+      <DependentUpon>FContact.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLeader\FLeader.resx">
+      <DependentUpon>FLeader.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLeader\FProject.resx">
+      <DependentUpon>FProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLeader\FTask.resx">
+      <DependentUpon>FTask.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormManager\FAssignedWork.resx">
+      <DependentUpon>FAssignedWork.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormManager\FChangePassWord.resx">
+      <DependentUpon>FChangePassWord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormManager\FCheck.resx">
+      <DependentUpon>FCheck.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormManager\FContact.resx">
+      <DependentUpon>FContact.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormManager\FDistribution.resx">
+      <DependentUpon>FDistribution.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormManager\FJob.resx">
+      <DependentUpon>FJob.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormManager\FLetterMain.resx">
+      <DependentUpon>FLetterMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormManager\FLogin.resx">
+      <DependentUpon>FLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormManager\FManager.resx">
+      <DependentUpon>FManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormManager\FSalary.resx">
+      <DependentUpon>FSalary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormStaff1\FAbsenceLetter.resx">
+      <DependentUpon>FAbsenceLetter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormStaff1\FAnnouncement.resx">
+      <DependentUpon>FAnnouncement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormStaff1\FChangePassWord.resx">
+      <DependentUpon>FChangePassWord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormStaff1\FCheck.resx">
+      <DependentUpon>FCheck.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormStaff1\FInformation.resx">
+      <DependentUpon>FInformation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormStaff1\FPayroll.resx">
+      <DependentUpon>FPayroll.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormStaff1\FStaff.resx">
+      <DependentUpon>FStaff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="FormManager\FShowLetter.resx">
+      <DependentUpon>FShowLetter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EntityDeploy Include="COMPANYModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>COMPANYModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="COMPANYModel.edmx.diagram">
+      <DependentUpon>COMPANYModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup Condition="$(VisualStudioVersion) == '17.0'">
+    <Reference Include="Microsoft.Data.Tools.Schema.Sql, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>$(SSDTPath)\Microsoft.Data.Tools.Schema.Sql.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Data.Tools.Schema.Sql.UnitTesting, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>$(SSDTUnitTestPath)\Microsoft.Data.Tools.Schema.Sql.UnitTesting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Data.Tools.Schema.Sql.UnitTestingAdapter, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>$(SSDTUnitTestPath)\Microsoft.Data.Tools.Schema.Sql.UnitTestingAdapter.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="COMPANYModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>COMPANYModel.edmx</DependentUpon>
+      <LastGenOutput>COMPANYModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="CompanyModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>COMPANYModel.edmx</DependentUpon>
+      <LastGenOutput>CompanyModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Database\ComJobSQL.sql" />
+    <Content Include="Database\SQLAbsence.sql" />
+    <Content Include="Database\SQLCheck.sql" />
+    <Content Include="Database\SQLContact.sql" />
+    <Content Include="Database\SQLDistribution.sql" />
+    <Content Include="Database\SQLProcessJob.sql" />
+    <Content Include="Database\SQLJob.sql" />
+    <Content Include="Database\SQLLeader.sql" />
+    <Content Include="Database\SQLManager.sql" />
+    <Content Include="Database\SQLProject.sql" />
+    <Content Include="Database\StaffDB.sql" />
+    <Content Include="Inco_img\Aha-Soft-Security-Secrecy.ico" />
+    <Content Include="Inco_img\BackgrInfo1.jpg" />
+    <Content Include="Inco_img\backgrLogin.jpg" />
+    <Content Include="Inco_img\edit_30px.png" />
+    <Content Include="Inco_img\Icons8-Windows-8-Users-Administrator.ico" />
+    <Content Include="Inco_img\plus_+_30px.png" />
+    <Content Include="Inco_img\trash_can_30px.png" />
+    <None Include="Resources\commercial_26px.png" />
+    <None Include="Resources\money_transfer_26px.png" />
+    <None Include="Resources\profile_26px.png" />
+    <None Include="Resources\payroll_80px.png" />
+    <None Include="Resources\leave_26px1.png" />
+    <None Include="Resources\password_26px.png" />
+    <None Include="Resources\home_26px.png" />
+    <None Include="Resources\checkmark_26px.png" />
+    <None Include="Resources\payroll.png" />
+    <None Include="Resources\absence.png" />
+    <None Include="Resources\images.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <SsdtUnitTestVersion>3.1</SsdtUnitTestVersion>
+  </PropertyGroup>
+  <Import Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.Sql.UnitTesting.targets" Condition="$(VisualStudioVersion) != '15.0' And '$(SQLDBExtensionsRefPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.Sql.UnitTesting.targets" Condition="$(VisualStudioVersion) != '15.0' And '$(SQLDBExtensionsRefPath)' == ''" />
+</Project>

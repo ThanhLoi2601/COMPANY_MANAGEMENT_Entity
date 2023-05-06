@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c3367fb8acc1448b8824b74734b0bd9c" Name="Diagram1">
+        <EntityTypeShape EntityType="masterModel.Leader" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.Manager" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.Staff" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.Job" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="masterModel.Contact" Width="1.5" PointX="3" PointY="4.75" />
+        <EntityTypeShape EntityType="masterModel.Project" Width="1.5" PointX="5.375" PointY="4.75" />
+        <EntityTypeShape EntityType="masterModel.Task" Width="1.5" PointX="7.625" PointY="4.625" />
+        <AssociationConnector Association="masterModel.FK__Tasks__Project_I__5D80D6A1" />
+        <EntityTypeShape EntityType="masterModel.Absence" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="masterModel.CompleteJob" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="masterModel.SQLCheck" Width="1.5" PointX="3.375" PointY="8.75" />
+        <EntityTypeShape EntityType="masterModel.ProcessJob" Width="1.5" PointX="5.375" PointY="8.75" />
+        <EntityTypeShape EntityType="masterModel.Distribution" Width="1.5" PointX="7.375" PointY="8.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

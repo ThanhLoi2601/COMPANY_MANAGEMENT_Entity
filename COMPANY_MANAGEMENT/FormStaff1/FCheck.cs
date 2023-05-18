@@ -15,6 +15,7 @@ namespace COMPANY_MANAGEMENT.FormStaff1
     public partial class FCheck : Form
     {
         SqlConnection conn = new SqlConnection(Properties.Settings.Default.conn);
+        DBConn dB = new DBConn();
         string ID;
         CheckDAO c = new CheckDAO();
         StaffDAO s = new StaffDAO();
@@ -74,60 +75,18 @@ namespace COMPANY_MANAGEMENT.FormStaff1
 
         public void LoadCongViec()
         {
-            Staff man = s.Search(ID);
-            string name = "Content";
-            conn.Open();
-            string query = string.Format("SELECT ProcessJob.Content FROM ProcessJob INNER JOIN Distribution ON ProcessJob.IDJob = Distribution.IDJob" +
-                                        " WHERE Distribution.IDStaff = '{0}'", ID);
-            SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
-            DataTable dataTable = new DataTable();
-            adapter.Fill(dataTable);
-
-            foreach (DataRow row in dataTable.Rows)
-            {
-                cbDsCV.Items.Add(row[name].ToString());
-            }
-            conn.Close();
+            job.LoadCbJob(cbDsCV, ID);
         }
 
         void LoadCheckState()
         {
-            Staff man = s.Search(ID);
-            if (conn.State == ConnectionState.Closed)
-            {
-                conn.Open();
-            }
-            SqlCommand command = new SqlCommand("SELECT CheckIn, CheckOut FROM SQLCheck WHERE ID = @id AND DateCheck = CONVERT(date, GETDATE())", conn);
-            command.Parameters.AddWithValue("@id", man.ID);
-            SqlDataReader reader = command.ExecuteReader();
-            if (reader.HasRows)
-            {
-                reader.Read();
-                bool bitValue1 = reader.GetBoolean(0);
-                bool bitValue2 = reader.GetBoolean(1);
-                checkIN.Checked = bitValue1;
-                checkOUT.Checked = bitValue2;
-            }
-            conn.Close();
+            c.CheckLoad(ID, checkIN, checkOUT);
         }
 
         private void cbDsCV_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string sqlQuery = "SELECT Process,IDJob FROM ProcessJob where Content = '" + cbDsCV.Text + "'";
-            SqlCommand objCommand = new SqlCommand(sqlQuery, conn);
-            if (conn.State == ConnectionState.Closed)
-            {
-                conn.Open();
-            }
-            objCommand.ExecuteNonQuery();
-            SqlDataReader dr;
-            dr = objCommand.ExecuteReader();
-            while (dr.Read())
-            {
-                textTienDo.Text = (string)dr["Process"].ToString();
-                textID.Text = (string)dr["IDJob"].ToString();
-            }
-            conn.Close();
+            textID.Text = j.SearchID(cbDsCV.Text);
+            textTienDo.Text = j.SearchPro(cbDsCV.Text).ToString();
         }
 
         private void btReport_Click(object sender, EventArgs e)
@@ -160,6 +119,15 @@ namespace COMPANY_MANAGEMENT.FormStaff1
             }
         }
 
+        private void checkIN_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!checkIN.Checked)
+            {
+                MessageBox.Show("Bạn đã check rồi");
+                checkIN.CheckState = CheckState.Checked;
+            }
+        }
+
         public bool CanCheckIn()
         {
             DateTime currentTime = DateTime.Now;
@@ -188,9 +156,9 @@ namespace COMPANY_MANAGEMENT.FormStaff1
             }
         }
 
-        void UpdateCom(ExtendedProcJob job)
+        void UpdateCom(ProcessJob job)
         {
-            int bonus = CalculateBonus(textID.Text);
+            int bonus = dB.CalculateBonus(textID.Text);
             ExtendedCompJob completeJob = new ExtendedCompJob(job.IDJob, job.Content, DateTime.Today, bonus);
             CompleteJobDAO completeJobDAO = new CompleteJobDAO();
             completeJobDAO.Insert(completeJob);
@@ -199,23 +167,22 @@ namespace COMPANY_MANAGEMENT.FormStaff1
             MessageBox.Show("Đã cập nhật công việc hoàn thành");
         }
 
-        public int CalculateBonus(string jobId)
+        private void textTienDo_TextChanged(object sender, EventArgs e)
         {
-            int bonus = 0;
-            string query = "SELECT Bonus FROM Job WHERE ID = @ID";
-            using (SqlCommand command = new SqlCommand(query, conn))
+            if (textTienDo.Text == "") return;
+            Dictionary<string, int> data = new Dictionary<string, int>();
+            data.Add("Complete", int.Parse(textTienDo.Text));
+            data.Add("Unfinished", 100 - int.Parse(textTienDo.Text));
+
+            chProc.Series.Clear();
+            chProc.Series.Add("Complete");
+            chProc.Series["Complete"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+
+            foreach (var item in data)
             {
-                command.Parameters.AddWithValue("@ID", jobId);
-                conn.Open();
-                SqlDataReader reader = command.ExecuteReader();
-                if (reader.Read())
-                {
-                    int jobBonus = reader.GetInt32(0);
-                    bonus = jobBonus;
-                }
-                reader.Close();
+                if (item.Value == 0) continue;
+                chProc.Series["Complete"].Points.AddXY(item.Key, item.Value);
             }
-            return bonus;
         }
     }
 }

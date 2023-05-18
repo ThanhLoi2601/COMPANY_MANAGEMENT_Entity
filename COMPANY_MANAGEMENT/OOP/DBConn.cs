@@ -11,6 +11,8 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using ComboBox = System.Windows.Forms.ComboBox;
 using System.Xml.Linq;
 using TextBox = System.Windows.Forms.TextBox;
+using System.IO;
+using System.Drawing;
 
 namespace COMPANY_MANAGEMENT.OOP
 {
@@ -82,7 +84,7 @@ namespace COMPANY_MANAGEMENT.OOP
             return false;
         }
 
-        public ExtendedStaff FindStaff(string sqlStr)
+        public Staff FindStaff(string sqlStr)
         {
             try
             {
@@ -179,7 +181,7 @@ namespace COMPANY_MANAGEMENT.OOP
             return null;
         }
 
-        public ExtendedJob FindJob(string sqlStr)
+        public Job FindJob(string sqlStr)
         {
             try
             {
@@ -246,7 +248,7 @@ namespace COMPANY_MANAGEMENT.OOP
                 {
                     string id = reader.GetString(0);
                     string content = reader.GetString(1);
-                    double proc = reader.GetDouble(2);
+                    double proc = reader.GetInt32(2);
                     return new ExtendedProcJob(id, content, proc);
                 }
             }
@@ -494,5 +496,67 @@ namespace COMPANY_MANAGEMENT.OOP
             conn.Close();
         }
 
+        public void saveImage(string sqlStr, string imgurl)
+        {
+            try
+            {
+                byte[] images = null;
+                FileStream stream = new FileStream(imgurl, FileMode.Open, FileAccess.Read);
+                BinaryReader brs = new BinaryReader(stream);
+                images = brs.ReadBytes((int)stream.Length);
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(sqlStr, conn);
+                cmd.Parameters.Add(new SqlParameter("@image", images));
+                int n = cmd.ExecuteNonQuery();
+                MessageBox.Show("Update image sucessfully,please reload the form to see update!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public void loadImage(string sqlStr, PictureBox avatar)
+        {
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(sqlStr, conn);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    reader.Read();
+                    if (reader.HasRows)
+                    {
+                        byte[] img = (byte[])(reader[0]);
+                        if (img == null)
+                        {
+                            avatar.Image = null;
+                        }
+                        else
+                        {
+                            MemoryStream ms = new MemoryStream(img);
+                            avatar.Image = Image.FromStream(ms);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Image does not exist!");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Do not have a profile picture, please update in Information !!");
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
     }
 }

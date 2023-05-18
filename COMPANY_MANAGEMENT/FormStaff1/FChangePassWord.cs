@@ -25,18 +25,18 @@ namespace COMPANY_MANAGEMENT.FormStaff1
 
         private void ChangePass()
         {
-            ExtendedStaff man = s.Search(ID);
+            Staff man = s.Search(ID);
             ExtendedStaff a = new ExtendedStaff(textMaDN.Text, textNewPass.Text);
             string currentPass = textOldPass.Text;
             string newPass = textNewPass.Text;
             string newPassConfirm = textNewPassConfirm.Text;
             string ID_DN = textMaDN.Text;
 
-            if(textMaDN.Text != man.ID)
+            if (textMaDN.Text != man.ID)
             {
                 MessageBox.Show("Mã đăng nhập không chính xác");
-            }    
-            else if(textOldPass.Text != man.Password )
+            }
+            else if (textOldPass.Text != man.Password)
             {
                 MessageBox.Show("Mật khẩu hiện tại không đúng?");
             }
@@ -45,10 +45,10 @@ namespace COMPANY_MANAGEMENT.FormStaff1
                 MessageBox.Show("Mật khẩu mới và mật khẩu confirm không chính xác");
                 return;
             }
-            else if(newPass == currentPass)
+            else if (newPass == currentPass)
             {
                 MessageBox.Show("Mật khẩu mới trùng với mật khẩu hiện tại");
-            }    
+            }
             else
             {
                 s.UpdatePass(a);
@@ -58,13 +58,17 @@ namespace COMPANY_MANAGEMENT.FormStaff1
 
         private void btConfirm_Click(object sender, EventArgs e)
         {
-            this.ChangePass();
+            DialogResult result = MessageBox.Show("Are you sure to change password?", "REMIND", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                this.ChangePass();
+            }
         }
 
         private void FChangePassWord_Load(object sender, EventArgs e)
         {
             this.FormBorderStyle = FormBorderStyle.None;
-            ExtendedStaff man = s.Search(ID);
+            Staff man = s.Search(ID);
             textMaDN.Text = man.ID;
         }
     }

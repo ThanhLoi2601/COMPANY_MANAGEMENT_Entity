@@ -9,13 +9,17 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using COMPANY_MANAGEMENT.OOP;
+using System.IO;
 
 namespace COMPANY_MANAGEMENT.FormStaff1
 {
     public partial class FInformation : Form
     {
-        StaffDAO s = new StaffDAO();
+        SqlConnection conn = new SqlConnection(Properties.Settings.Default.conn);
+        DBConn dB = new DBConn();
+        StaffDAO sta = new StaffDAO();
         string ID;
+        string imgurl = "";
         public FInformation(string ID)
         {
             InitializeComponent();
@@ -26,14 +30,15 @@ namespace COMPANY_MANAGEMENT.FormStaff1
         {
             this.FormBorderStyle = FormBorderStyle.None;
             this.LoadMyInfo();
+            this.loadImage();
         }
 
         private void LoadMyInfo()
         {
-            ExtendedStaff man = s.Search(ID);
+            Staff man = sta.Search(ID);
             textID.Text = man.ID;
             textName.Text = man.Name;
-            dateOfBirth.Value = (DateTime)man.Birth;
+            dateOfBirth.Value = man.Birth.Value;
             textIDcard.Text = man.ID_Card;
             textMail.Text = man.Email;
             textPlace.Text = man.Address;
@@ -44,8 +49,28 @@ namespace COMPANY_MANAGEMENT.FormStaff1
         private void btUpdate_Click(object sender, EventArgs e)
         {
             ExtendedStaff a = new ExtendedStaff(textName.Text, dateOfBirth.Value, textIDcard.Text, textMail.Text, textPlace.Text, ID);
-            s.Update(a);
+            sta.Update(a);
+        }
+
+        private void btBrow_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = " png files(*.png)|*.png|jpg files(*.jpg)|*.jpg|All files(*.*)|*.*";
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                imgurl = dialog.FileName.ToString();
+                picAvatar.ImageLocation = imgurl;
+            }
+        }
+
+        private void btSave_Click(object sender, EventArgs e)
+        {
+            sta.saveImage(ID, imgurl);
+        }
+
+        void loadImage()
+        {
+            sta.loadImage(ID, picAvatar);
         }
     }
 }
-

@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace COMPANY_MANAGEMENT.FormStaff1
 {
-    partial class FChangePassWord 
+    partial class FChangePassWord
     {
         /// <summary>
         /// Required designer variable.
@@ -52,84 +52,97 @@ namespace COMPANY_MANAGEMENT.FormStaff1
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(23, 37);
+            this.label1.Location = new System.Drawing.Point(40, 31);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(99, 17);
+            this.label1.Size = new System.Drawing.Size(114, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Mã đăng nhập";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(23, 87);
+            this.label2.Location = new System.Drawing.Point(40, 94);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(94, 17);
+            this.label2.Size = new System.Drawing.Size(112, 20);
             this.label2.TabIndex = 1;
             this.label2.Text = "Old password";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(23, 136);
+            this.label3.Location = new System.Drawing.Point(40, 155);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(99, 17);
+            this.label3.Size = new System.Drawing.Size(119, 20);
             this.label3.TabIndex = 2;
             this.label3.Text = "New password";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(23, 186);
+            this.label4.Location = new System.Drawing.Point(40, 217);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(149, 17);
+            this.label4.Size = new System.Drawing.Size(180, 20);
             this.label4.TabIndex = 3;
             this.label4.Text = "Confirm new password";
             // 
             // textMaDN
             // 
-            this.textMaDN.Location = new System.Drawing.Point(170, 34);
+            this.textMaDN.Location = new System.Drawing.Point(223, 27);
+            this.textMaDN.Margin = new System.Windows.Forms.Padding(4);
             this.textMaDN.Name = "textMaDN";
             this.textMaDN.ReadOnly = true;
-            this.textMaDN.Size = new System.Drawing.Size(223, 22);
+            this.textMaDN.Size = new System.Drawing.Size(278, 27);
             this.textMaDN.TabIndex = 4;
             // 
             // textOldPass
             // 
-            this.textOldPass.Location = new System.Drawing.Point(170, 81);
+            this.textOldPass.Location = new System.Drawing.Point(223, 86);
+            this.textOldPass.Margin = new System.Windows.Forms.Padding(4);
             this.textOldPass.Name = "textOldPass";
-            this.textOldPass.Size = new System.Drawing.Size(223, 22);
+            this.textOldPass.Size = new System.Drawing.Size(278, 27);
             this.textOldPass.TabIndex = 5;
             // 
             // textNewPass
             // 
-            this.textNewPass.Location = new System.Drawing.Point(170, 136);
+            this.textNewPass.Location = new System.Drawing.Point(223, 155);
+            this.textNewPass.Margin = new System.Windows.Forms.Padding(4);
             this.textNewPass.Name = "textNewPass";
-            this.textNewPass.Size = new System.Drawing.Size(223, 22);
+            this.textNewPass.Size = new System.Drawing.Size(278, 27);
             this.textNewPass.TabIndex = 6;
             // 
             // textNewPassConfirm
             // 
-            this.textNewPassConfirm.Location = new System.Drawing.Point(170, 183);
+            this.textNewPassConfirm.Location = new System.Drawing.Point(223, 214);
+            this.textNewPassConfirm.Margin = new System.Windows.Forms.Padding(4);
             this.textNewPassConfirm.Name = "textNewPassConfirm";
-            this.textNewPassConfirm.Size = new System.Drawing.Size(223, 22);
+            this.textNewPassConfirm.Size = new System.Drawing.Size(278, 27);
             this.textNewPassConfirm.TabIndex = 7;
             // 
             // btConfirm
             // 
+            this.btConfirm.FlatAppearance.BorderSize = 0;
+            this.btConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btConfirm.Location = new System.Drawing.Point(322, 211);
+            this.btConfirm.Image = global::COMPANY_MANAGEMENT.Properties.Resources.checkmark_60px;
+            this.btConfirm.Location = new System.Drawing.Point(402, 249);
+            this.btConfirm.Margin = new System.Windows.Forms.Padding(4);
             this.btConfirm.Name = "btConfirm";
-            this.btConfirm.Size = new System.Drawing.Size(135, 43);
+            this.btConfirm.Size = new System.Drawing.Size(169, 69);
             this.btConfirm.TabIndex = 23;
             this.btConfirm.Text = "CONFIRM";
+            this.btConfirm.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btConfirm.UseVisualStyleBackColor = true;
             this.btConfirm.Click += new System.EventHandler(this.btConfirm_Click);
             // 
             // FChangePassWord
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(490, 257);
+            this.ClientSize = new System.Drawing.Size(612, 321);
             this.Controls.Add(this.btConfirm);
             this.Controls.Add(this.textNewPassConfirm);
             this.Controls.Add(this.textNewPass);
@@ -139,8 +152,10 @@ namespace COMPANY_MANAGEMENT.FormStaff1
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FChangePassWord";
-            this.Text = "Change passworf";
+            this.Text = "Change password";
             this.Load += new System.EventHandler(this.FChangePassWord_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

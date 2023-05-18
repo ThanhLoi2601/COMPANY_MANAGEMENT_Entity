@@ -16,7 +16,7 @@ namespace COMPANY_MANAGEMENT.OOP
 
         public DataTable LoadList(string ID)
         {
-            return dB.LoadList(string.Format("SELECT d.IDJob,j.Name,j.Content FROM Job j,  Distribution d " +
+            return dB.LoadList(string.Format("SELECT d.IDJob,j.Name,j.Content, j.DateStart, j.DateEnd FROM Job j,  Distribution d " +
                     "WHERE j.ID = d.IDJob AND d.IDStaff = '{0}' AND d.IDJob NOT IN (SELECT IDJob FROM CompleteJob)", ID));
         }
     }

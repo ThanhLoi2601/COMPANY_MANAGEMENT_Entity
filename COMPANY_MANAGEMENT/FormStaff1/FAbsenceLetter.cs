@@ -16,7 +16,6 @@ namespace COMPANY_MANAGEMENT.FormStaff1
         AbsenceLetterDAO ab = new AbsenceLetterDAO();
         StaffDAO s = new StaffDAO();
         string ID;
-        string Name;
         int count = 0;
         int day = 0;
 
@@ -48,19 +47,19 @@ namespace COMPANY_MANAGEMENT.FormStaff1
                 reason = textReason.Text;
             }
 
-            AbsenceLetter lt = new AbsenceLetter(textID.Text,textName.Text, reason, dateStart.Value, dateEnd.Value);
+            AbsenceLetter lt = new AbsenceLetter(textName.Text, textID.Text, reason, dateStart.Value, dateEnd.Value);
             DateTime d1 = dateStart.Value;
             int day1 = d1.Day;
             DateTime d2 = dateEnd.Value;
             int day2 = d2.Day;
             TimeSpan span = d2.Subtract(d1);
-            int d = day2 - day1 + 1; 
+            int d = day2 - day1 + 1;
 
             if (textID.Text != ID)
             {
                 MessageBox.Show("Mã nhân viên không hợp lệ");
             }
-            else if (d<0)
+            else if (d < 0)
             {
                 MessageBox.Show("Ngày nhập không hợp lệ");
             }
@@ -91,7 +90,7 @@ namespace COMPANY_MANAGEMENT.FormStaff1
 
         private void FAbsenceLetter_Load(object sender, EventArgs e)
         {
-            if(ID.Contains("EMP"))
+            if (ID.Contains("EMP"))
                 this.FormBorderStyle = FormBorderStyle.None;
             textName.Text = Name;
             textID.Text = ID;

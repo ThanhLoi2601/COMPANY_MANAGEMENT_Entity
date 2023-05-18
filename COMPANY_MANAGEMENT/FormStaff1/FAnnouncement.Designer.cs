@@ -32,8 +32,9 @@ namespace COMPANY_MANAGEMENT.FormStaff1
             this.components = new System.ComponentModel.Container();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label6 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.dtGVAnnou = new System.Windows.Forms.DataGridView();
+            this.btLoadHightLight = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGVAnnou)).BeginInit();
             this.SuspendLayout();
             // 
             // label6
@@ -42,33 +43,54 @@ namespace COMPANY_MANAGEMENT.FormStaff1
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.label6.Location = new System.Drawing.Point(54, 20);
+            this.label6.Location = new System.Drawing.Point(68, 24);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(195, 25);
             this.label6.TabIndex = 34;
             this.label6.Text = "ANNOUNCEMENT";
             // 
-            // dataGridView1
+            // dtGVAnnou
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(59, 76);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(869, 447);
-            this.dataGridView1.TabIndex = 35;
+            this.dtGVAnnou.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtGVAnnou.BackgroundColor = System.Drawing.Color.White;
+            this.dtGVAnnou.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtGVAnnou.GridColor = System.Drawing.Color.Black;
+            this.dtGVAnnou.Location = new System.Drawing.Point(74, 96);
+            this.dtGVAnnou.Margin = new System.Windows.Forms.Padding(4);
+            this.dtGVAnnou.Name = "dtGVAnnou";
+            this.dtGVAnnou.RowHeadersWidth = 51;
+            this.dtGVAnnou.RowTemplate.Height = 24;
+            this.dtGVAnnou.Size = new System.Drawing.Size(1086, 559);
+            this.dtGVAnnou.TabIndex = 35;
+            // 
+            // btLoadHightLight
+            // 
+            this.btLoadHightLight.FlatAppearance.BorderSize = 0;
+            this.btLoadHightLight.Image = global::COMPANY_MANAGEMENT.Properties.Resources._4b24f6325b54850adc45;
+            this.btLoadHightLight.Location = new System.Drawing.Point(1013, 11);
+            this.btLoadHightLight.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.btLoadHightLight.Name = "btLoadHightLight";
+            this.btLoadHightLight.Size = new System.Drawing.Size(147, 72);
+            this.btLoadHightLight.TabIndex = 46;
+            this.btLoadHightLight.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btLoadHightLight.UseVisualStyleBackColor = true;
+            this.btLoadHightLight.Click += new System.EventHandler(this.btLoadHightLight_Click);
             // 
             // FAnnouncement
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1001, 556);
-            this.Controls.Add(this.dataGridView1);
+            this.ClientSize = new System.Drawing.Size(1251, 696);
+            this.Controls.Add(this.btLoadHightLight);
+            this.Controls.Add(this.dtGVAnnou);
             this.Controls.Add(this.label6);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FAnnouncement";
             this.Text = "Announcement";
             this.Load += new System.EventHandler(this.FAnnouncement_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGVAnnou)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -77,6 +99,7 @@ namespace COMPANY_MANAGEMENT.FormStaff1
         #endregion
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dtGVAnnou;
+        private System.Windows.Forms.Button btLoadHightLight;
     }
 }
